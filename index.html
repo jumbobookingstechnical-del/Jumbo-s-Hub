@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jumbo's Hub</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="logo">Jumbo's Hub</div>
+
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Categories</a>
+        <a href="#">Deals</a>
+        <a href="#">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" onclick="toggleCart()">
+          🛒 <span id="nav-cart-count">0</span>
+        </button>
+
+        <button class="icon-btn" onclick="toggleWishlist()">
+          ❤️ <span id="wishlist-count">0</span>
+        </button>
+
+        <button class="btn">Sign In</button>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1>Shop the Latest Trends</h1>
+        <p>Discover premium fashion, gadgets, and lifestyle products.</p>
+
+        <div class="hero-buttons">
+          <button class="btn primary">Shop Now</button>
+          <button class="btn secondary">Explore</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search products..."
+        onkeyup="searchProducts()"
+      />
+    </div>
+
+    <!-- CATEGORIES -->
+    <section class="categories">
+      <h2>Shop by Category</h2>
+
+      <div class="category-grid">
+        <div class="category-card">👕 Fashion</div>
+        <div class="category-card">📱 Electronics</div>
+        <div class="category-card">👟 Shoes</div>
+        <div class="category-card">🧴 Beauty</div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS (UNCHANGED - ALL YOUR PRODUCTS KEPT) -->
+    <section class="products">
+      <h2>Featured Products</h2>
+
+      <div class="product-grid">
+        <!-- CLOTHING -->
+        <div class="product-card">
+          <img
+            src="images/brown.png"
+            onclick="openProductModal('Premium Hoodie', 45, 'images/brown.png')"
+            alt="Brown hoodie"
+          />
+          <h4>Premium Hoodie</h4>
+          <p>$45.00</p>
+          <button onclick="addToCart('Premium Hoodie', 45)">Add</button>
+          <button onclick="addToWishlist('Premium Hoodie')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Hoddies.png" alt="Urban hoodie" />
+          <h4>Urban Hoodie</h4>
+          <p>$50.00</p>
+          <button onclick="addToCart('Urban Hoodie', 50)">Add</button>
+          <button onclick="addToWishlist('Urban Hoodie')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Classic.png" alt="T-shirt" />
+          <h4>Classic T-Shirt</h4>
+          <p>$25.00</p>
+          <button onclick="addToCart('Classic T-Shirt', 25)">Add</button>
+          <button onclick="addToWishlist('Classic T-Shirt')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Winter.png" alt="Winter jacket" />
+          <h4>Winter Jacket</h4>
+          <p>$90.00</p>
+          <button onclick="addToCart('Winter Jacket', 90)">Add</button>
+          <button onclick="addToWishlist('Winter Jacket')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/denim.png" alt="Denim jacket" />
+          <h4>Denim Jacket</h4>
+          <p>$75.00</p>
+          <button onclick="addToCart('Denim Jacket', 75)">Add</button>
+          <button onclick="addToWishlist('Denim Jacket')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Cargo.png" alt="Cargo pants" />
+          <h4>Cargo Pants</h4>
+          <p>$60.00</p>
+          <button onclick="addToCart('Cargo Pants', 60)">Add</button>
+          <button onclick="addToWishlist('Cargo Pants')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Premium.png" alt="Tracksuit" />
+          <h4>Premium Tracksuit</h4>
+          <p>$85.00</p>
+          <button onclick="addToCart('Tracksuit', 85)">Add</button>
+          <button onclick="addToWishlist('Tracksuit')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Casual.png" alt="Casual shirt" />
+          <h4>Casual Shirt</h4>
+          <p>$35.00</p>
+          <button onclick="addToCart('Casual Shirt', 35)">Add</button>
+          <button onclick="addToWishlist('Casual Shirt')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/jeans.png" alt="Jeans" />
+          <h4>Blue Jeans</h4>
+          <p>$55.00</p>
+          <button onclick="addToCart('Blue Jeans', 55)">Add</button>
+          <button onclick="addToWishlist('Blue Jeans')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Summer.png" alt="Shorts" />
+          <h4>Summer Shorts</h4>
+          <p>$20.00</p>
+          <button onclick="addToCart('Summer Shorts', 20)">Add</button>
+          <button onclick="addToWishlist('Summer Shorts')">❤️</button>
+        </div>
+
+        <!-- GADGETS (UNCHANGED) -->
+        <div class="product-card">
+          <img src="images/X.png" alt="Smartphone" />
+          <h4>Smartphone X</h4>
+          <p>$550.00</p>
+          <button onclick="addToCart('Smartphone X', 550)">Add</button>
+          <button onclick="addToWishlist('Smartphone X')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Ultra.png" alt="Laptop" />
+          <h4>Ultra Laptop</h4>
+          <p>$1200.00</p>
+          <button onclick="addToCart('Ultra Laptop', 1200)">Add</button>
+          <button onclick="addToWishlist('Ultra Laptop')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Gaming.png" alt="Console" />
+          <h4>Gaming Console</h4>
+          <p>$400.00</p>
+          <button onclick="addToCart('Gaming Console', 400)">Add</button>
+          <button onclick="addToWishlist('Gaming Console')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Wireless.png" alt="Earbuds" />
+          <h4>Wireless Earbuds</h4>
+          <p>$80.00</p>
+          <button onclick="addToCart('Wireless Earbuds', 80)">Add</button>
+          <button onclick="addToWishlist('Wireless Earbuds')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Smart.png" alt="Watch" />
+          <h4>Smart Watch Pro</h4>
+          <p>$130.00</p>
+          <button onclick="addToCart('Smart Watch Pro', 130)">Add</button>
+          <button onclick="addToWishlist('Smart Watch Pro')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Android.png" alt="Tablet" />
+          <h4>Android Tablet</h4>
+          <p>$300.00</p>
+          <button onclick="addToCart('Android Tablet', 300)">Add</button>
+          <button onclick="addToWishlist('Android Tablet')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/Bluetooth.png" alt="Speaker" />
+          <h4>Bluetooth Speaker</h4>
+          <p>$45.00</p>
+          <button onclick="addToCart('Bluetooth Speaker', 45)">Add</button>
+          <button onclick="addToWishlist('Bluetooth Speaker')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/power.png" alt="Power bank" />
+          <h4>Power Bank</h4>
+          <p>$35.00</p>
+          <button onclick="addToCart('Power Bank', 35)">Add</button>
+          <button onclick="addToWishlist('Power Bank')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/HD.png" alt="Camera" />
+          <h4>HD Camera</h4>
+          <p>$250.00</p>
+          <button onclick="addToCart('HD Camera', 250)">Add</button>
+          <button onclick="addToWishlist('HD Camera')">❤️</button>
+        </div>
+
+        <div class="product-card">
+          <img src="images/WiFi.png" alt="Router" />
+          <h4>WiFi Router</h4>
+          <p>$70.00</p>
+          <button onclick="addToCart('WiFi Router', 70)">Add</button>
+          <button onclick="addToWishlist('WiFi Router')">❤️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CART (ONLY ONE VERSION KEPT) -->
+    <div id="cart" class="cart">
+      <h3>Shopping Cart</h3>
+      <div id="cart-items"></div>
+      <hr />
+      <div class="cart-summary">
+        <p>Items: <span id="cartCount">0</span></p>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+        <button class="checkout-btn" onclick="makePayment()">
+          Pay with Flutterwave
+        </button>
+      </div>
+    </div>
+
+    <!-- WISHLIST (ONLY ONE VERSION KEPT) -->
+    <div id="wishlist-panel" class="cart">
+      <h3>Wishlist ❤️</h3>
+      <div id="wishlist-items"></div>
+    </div>
+
+    <!-- FLOATING BUTTONS (FIXED IDS) -->
+    <button class="floating-cart" onclick="toggleCart()">
+      🛒 <span id="floating-cart-count">0</span>
+    </button>
+
+    <button class="floating-wishlist" onclick="toggleWishlist()">❤️</button>
+
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script src="script.js"></script>
+    <!-- PRODUCT QUICK VIEW MODAL -->
+    <div id="productModal" class="modal">
+      <div class="modal-content">
+        <img id="modal-img" />
+        <h2 id="modal-title"></h2>
+        <p id="modal-price"></p>
+
+        <button id="modal-add" class="btn primary">Add to Cart</button>
+        <button onclick="closeProductModal()" class="btn secondary">
+          Close
+        </button>
+      </div>
+    </div>
+    <!-- CHECKOUT ORDER SUMMARY MODAL -->
+    <div id="checkoutModal" class="modal">
+      <div class="modal-content">
+        <h2>Order Summary</h2>
+
+        <div id="order-summary"></div>
+
+        <h3>Total: $<span id="order-total">0</span></h3>
+
+        <button onclick="confirmPayment()" class="btn primary">Pay Now</button>
+
+        <button onclick="closeModal()" class="btn secondary">Cancel</button>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Brand -->
+        <div class="footer-box">
+          <h2>Trendify</h2>
+          <p>
+            Your one-stop shop for fashion, gadgets, and lifestyle essentials.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-box">
+          <h3>Quick Links</h3>
+          <a href="#">Home</a>
+          <a href="#">Shop</a>
+          <a href="#">Categories</a>
+          <a href="#">Deals</a>
+          <a href="#">Contact</a>
+        </div>
+
+        <!-- Support -->
+        <div class="footer-box">
+          <h3>Support</h3>
+          <a href="#">Help Center</a>
+          <a href="#">Shipping Info</a>
+          <a href="#">Returns</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-box">
+          <h3>Contact</h3>
+          <p>Email: jumbobookingstechnical@gmail.com</p>
+          <p>Phone: +234 808 468 2287</p>
+          <p>Lagos, Nigeria</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Trendify. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

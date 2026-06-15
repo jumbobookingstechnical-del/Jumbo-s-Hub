@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Checkout - Trendify</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="checkout-container">
+      <h1>Checkout</h1>
+
+      <div class="checkout-grid">
+        <!-- LEFT: FORM -->
+        <div class="checkout-form">
+          <h3>Shipping Details</h3>
+
+          <input type="text" placeholder="Full Name" required />
+          <input type="text" placeholder="Address" required />
+          <input type="text" placeholder="City" required />
+          <input type="text" placeholder="Phone Number" required />
+
+          <button onclick="makePayment()" class="pay-btn">
+  Pay with Flutterwave
+</button>
+
+        <!-- RIGHT: ORDER SUMMARY -->
+        <div class="checkout-summary">
+          <h3>Your Order</h3>
+
+          <div id="order-items"></div>
+
+          <hr />
+
+          <h2>Total: $<span id="order-total">0</span></h2>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      let total = 0;
+
+      cart.forEach((item) => {
+        total += item.price * item.qty;
+
+        document.getElementById("order-items").innerHTML += `
+    <p>${item.name} x ${item.qty} - $${item.price * item.qty}</p>
+  `;
+      });
+
+      document.getElementById("order-total").innerText = total.toFixed(2);
+
+      function payNow() {
+        alert("Redirecting to payment...");
+        window.location.href = "payment.html";
+      }
+    </script>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+
+<script>
+function makePayment() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let total = 0;
+
+  cart.forEach(item => {
+    total += item.price * item.qty;
+  });
+
+  FlutterwaveCheckout({
+    public_key: "FLWPUBK_TEST-28df493296a944af41bb305f61a9d933-X",
+    tx_ref: "TX-" + Date.now(),
+    amount: total,
+    currency: "USD", 
+    payment_options: "card, mobilemoney, ussd",
+
+    customer: {
+      email: "customer@example.com",
+      name: "Trendify Customer"
+    },
+
+    callback: function (data) {
+      alert("Payment successful!");
+      console.log(data);
+
+      localStorage.removeItem("cart");
+      window.location.href = "success.html";
+    },
+
+    onclose: function() {
+      console.log("Payment closed");
+    },
+
+    customizations: {
+      title: "Trendify Store",
+      description: "Order Payment",
+      logo: "images/logo.png"
+    }
+  });
+}
+</script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Payment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body style="font-family: Arial; text-align: center; padding: 50px">
+    <h1>Complete Payment</h1>
+
+    <p>Total Amount:</p>
+    <h2 id="amount"></h2>
+
+    <button
+      onclick="pay()"
+      style="
+        padding: 15px 25px;
+        background: #ff9900;
+        border: none;
+        color: white;
+        cursor: pointer;
+      "
+    >
+      Pay Now
+    </button>
+
+    <script>
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      let total = 0;
+
+      cart.forEach((item) => {
+        total += item.price * item.qty;
+      });
+
+      document.getElementById("amount").innerText = "$" + total.toFixed(2);
+
+      function pay() {
+        alert("Here you will connect Paystack or Flutterwave API next");
+      }
+    </script>
+  </body>
+</html>
